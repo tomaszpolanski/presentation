@@ -34,12 +34,14 @@ class _PresentationExampleState extends State<PresentationExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Presentation(
-      controller: _controller,
-      presentationController: _presentationController,
-      children: const [
-        SimplePage('1'),
-      ],
+    return MaterialApp(
+      home: Presentation(
+        controller: _controller,
+        presentationController: _presentationController,
+        children: const [
+          SimplePage('1'),
+        ],
+      ),
     );
   }
 }
