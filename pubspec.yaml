@@ -1,8 +1,8 @@
 name: presentation
 description: Set of tools providing presentation capabilities (tansitions, animation, navigation,...) to a Flutter application
 version: 0.0.1
-author: Tomek Polanski
-homepage:
+author: Tomek Polanski <polanski.tomek@gmail.com>
+homepage: https://github.com/tomaszpolanski/presentation
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
