@@ -66,7 +66,7 @@ class PresentationController {
           print('Unknown action: $action');
       }
     } else {
-      for (ValueChanged<PageAction> listener in _listeners) {
+      for (final ValueChanged<PageAction> listener in _listeners) {
         listener(action);
       }
     }

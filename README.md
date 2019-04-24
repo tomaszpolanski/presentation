@@ -1,6 +1,6 @@
 # presentation
 
-Set of tools providing presentation capabilities (tansitions, animation, navigation,...) to a Flutter application
+Set of tools providing presentation capabilities (transitions, animations, navigation,...) to a Flutter application
 
 ## Getting Started
 

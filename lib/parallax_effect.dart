@@ -23,7 +23,7 @@ class ParallaxWidget extends StatelessWidget {
       opacity: visibility.visibleFraction,
       child: Transform(
         alignment: FractionalOffset.topLeft,
-        transform: Matrix4.translationValues(xTranslation, 0.0, 0.0),
+        transform: Matrix4.translationValues(xTranslation, 0, 0),
         child: child,
       ),
     );

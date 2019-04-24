@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Based on https://github.com/roughike/page-transformer
 /// A class that can be used to compute visibility information about
 /// the current page.
 class PageVisibilityResolver {
@@ -41,9 +42,9 @@ class PageVisibilityResolver {
     final double safePagePosition = !pagePosition.isNaN ? pagePosition : 0.0;
 
     if (safePagePosition > 1.0) {
-      return 1.0;
+      return 1;
     } else if (safePagePosition < -1.0) {
-      return -1.0;
+      return -1;
     }
 
     return safePagePosition;
