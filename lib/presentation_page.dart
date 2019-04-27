@@ -29,34 +29,31 @@ class Presentation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverOverlapAbsorber(
-              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-            ),
-          ];
-        },
-        body: GestureDetector(
-          key: Key('presentation'),
-          onTap: presentationController.nextStep,
-          onDoubleTap: presentationController.previousStep,
-          child: PresentationSettings(
-            controller: presentationController,
-            child: DefaultTextStyle.merge(
-              child: ScrollNotifier(
-                child: PageView.builder(
-                  controller: controller,
-                  itemCount: children.length,
-                  itemBuilder: (context, index) {
-                    return PageViewSettings(
-                      index: index,
-                      child: children[index],
-                    );
-                  },
-                ),
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return [
+          SliverOverlapAbsorber(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+          ),
+        ];
+      },
+      body: GestureDetector(
+        key: Key('presentation'),
+        onTap: presentationController.nextStep,
+        onDoubleTap: presentationController.previousStep,
+        child: PresentationSettings(
+          controller: presentationController,
+          child: DefaultTextStyle.merge(
+            child: ScrollNotifier(
+              child: PageView.builder(
+                controller: controller,
+                itemCount: children.length,
+                itemBuilder: (context, index) {
+                  return PageViewSettings(
+                    index: index,
+                    child: children[index],
+                  );
+                },
               ),
             ),
           ),
