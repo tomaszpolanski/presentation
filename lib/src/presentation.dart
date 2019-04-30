@@ -1,4 +1,82 @@
+import 'package:presentation/src/page_transformer.dart';
 import 'package:flutter/material.dart';
+import 'package:presentation/src/presentation_controller.dart';
+
+class Presentation extends StatelessWidget {
+  const Presentation({
+    Key key,
+    @required this.children,
+    @required this.controller,
+    @required this.presentationController,
+  }) : super(key: key);
+
+  final List<Widget> children;
+  final PageController controller;
+  final PresentationController presentationController;
+
+  @override
+  Widget build(BuildContext context) {
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return [
+          SliverOverlapAbsorber(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+          ),
+        ];
+      },
+      body: GestureDetector(
+        key: Key('presentation'),
+        onTap: presentationController.nextStep,
+        onDoubleTap: presentationController.previousStep,
+        child: ScrollNotifier(
+          child: PageView.builder(
+            controller: controller,
+            itemCount: children.length,
+            itemBuilder: (context, index) {
+              return PageViewSettings(
+                index: index,
+                child: children[index],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PageViewSettings extends InheritedWidget {
+  const PageViewSettings({
+    Key key,
+    @required this.index,
+    @required Widget child,
+  }) : super(key: key, child: child);
+
+  final int index;
+
+  static PageViewSettings of(BuildContext context) {
+    final PageViewSettings widget =
+        context.inheritFromWidgetOfExactType(PageViewSettings);
+    return widget;
+  }
+
+  @override
+  bool updateShouldNotify(PageViewSettings oldWidget) =>
+      index != oldWidget.index;
+}
+
+// class PresentationSettings extends InheritedWidget {
+//   const PresentationSettings({
+//     Key key,
+//     this.controller,
+//     Widget child,
+//   }) : super(key: key, child: child);
+
+//   final PresentationController controller;
+
+//   @override
+//   bool updateShouldNotify(InheritedWidget oldWidget) => false;
+// }
 
 /// Based on https://github.com/roughike/page-transformer
 /// A class that can be used to compute visibility information about
@@ -78,50 +156,4 @@ class PageVisibility {
   /// Likewise, if the page is fully out of view, on the left, this
   /// value is going to be -1.0.
   final double pagePosition;
-}
-
-class ScrollNotifier extends StatefulWidget {
-  const ScrollNotifier({Key key, this.child}) : super(key: key);
-
-  final Widget child;
-
-  @override
-  _ScrollNotifierState createState() => _ScrollNotifierState();
-}
-
-class _ScrollNotifierState extends State<ScrollNotifier> {
-  ScrollMetrics metrics;
-
-  @override
-  Widget build(BuildContext context) {
-    return NotificationListener<ScrollNotification>(
-      onNotification: (ScrollNotification notification) {
-        setState(() => metrics = notification.metrics);
-      },
-      child: ScrollSettings(
-        metrics: metrics,
-        child: widget.child,
-      ),
-    );
-  }
-}
-
-class ScrollSettings extends InheritedWidget {
-  const ScrollSettings({
-    Key key,
-    @required this.metrics,
-    @required Widget child,
-  }) : super(key: key, child: child);
-
-  final ScrollMetrics metrics;
-
-  static ScrollMetrics of(BuildContext context) {
-    final ScrollSettings widget =
-        context.inheritFromWidgetOfExactType(ScrollSettings);
-    return widget?.metrics;
-  }
-
-  @override
-  bool updateShouldNotify(ScrollSettings oldWidget) =>
-      metrics != oldWidget.metrics;
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:presentation/presentation_controller.dart';
+import 'package:presentation/src/presentation_controller.dart';
 
 class PageStepper<T> extends Listenable {
   PageStepper({this.controller, this.steps}) : _currentStep = steps.first;

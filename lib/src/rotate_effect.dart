@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
-import 'package:presentation/page_transformer.dart';
-import 'package:presentation/presentation_page.dart';
+import 'package:presentation/src/page_transformer.dart';
+import 'package:presentation/src/presentation.dart';
 
 class RotateWidget extends StatelessWidget {
   const RotateWidget({Key key, @required this.child}) : super(key: key);
