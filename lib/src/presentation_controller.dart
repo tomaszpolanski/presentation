@@ -5,6 +5,8 @@ const pageUpKey = 266;
 const pageDownKey = 267;
 const leftKey = 263;
 const rightKey = 262;
+const downKey = 264;
+const upKey = 265;
 
 class PresentationController {
   PresentationController({@required this.controller})
@@ -33,17 +35,20 @@ class PresentationController {
     if (value is RawKeyUpEvent) {
       if (value.data is RawKeyEventDataAndroid) {
         final RawKeyEventDataAndroid data = value.data;
+        print(data.keyCode);
         switch (data.keyCode) {
           case 20:
           case 21:
           case leftKey:
           case pageUpKey:
+          case upKey:
             _sendAction(PageAction.previous);
             break;
           case 19:
           case 22:
           case rightKey:
           case pageDownKey:
+          case downKey:
             _sendAction(PageAction.next);
             break;
           default:
