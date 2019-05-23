@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const pageUpKey = 266;
-const pageDownKey = 267;
-const leftKey = 263;
-const rightKey = 262;
-const downKey = 264;
-const upKey = 265;
+class AndroidKeys {
+  static const pageUpKey = 266;
+  static const pageDownKey = 267;
+  static const leftKey = 263;
+  static const rightKey = 262;
+  static const downKey = 264;
+  static const upKey = 265;
+}
+
+class MacOSKeys {
+  static const escapeKey = 53;
+  static const spaceKey = 49;
+  static const pageUpKey = 116;
+  static const pageDownKey = 121;
+  static const leftKey = 123;
+  static const rightKey = 124;
+  static const downKey = 125;
+  static const upKey = 126;
+}
+
 
 class PresentationController {
   PresentationController({@required this.controller})
@@ -33,28 +47,61 @@ class PresentationController {
 
   void _handleKey(RawKeyEvent value) {
     if (value is RawKeyUpEvent) {
+      print(value.data);
+      if (value.data is RawKeyEventDataMacOs) {
+        final RawKeyEventDataMacOs data = value.data;
+        _handleRawKeyMacOS(data);
+      }
+      if (value.data is RawKeyEventDataLinux) {
+        final RawKeyEventDataLinux data = value.data;
+        _handleRawKeyAndroid(data);
+      }
       if (value.data is RawKeyEventDataAndroid) {
         final RawKeyEventDataAndroid data = value.data;
-        print(data.keyCode);
-        switch (data.keyCode) {
-          case 20:
-          case 21:
-          case leftKey:
-          case pageUpKey:
-          case upKey:
-            _sendAction(PageAction.previous);
-            break;
-          case 19:
-          case 22:
-          case rightKey:
-          case pageDownKey:
-          case downKey:
-            _sendAction(PageAction.next);
-            break;
-          default:
-            break;
-        }
+        _handleRawKeyAndroid(data);
       }
+    }
+  }
+
+  void _handleRawKeyAndroid(var data) {
+    switch (data.keyCode) {
+      case 20:
+      case 21:
+      case AndroidKeys.leftKey:
+      case AndroidKeys.pageUpKey:
+      case AndroidKeys.upKey:
+        _sendAction(PageAction.previous);
+        break;
+      case 19:
+      case 22:
+      case AndroidKeys.rightKey:
+      case AndroidKeys.pageDownKey:
+      case AndroidKeys.downKey:
+        _sendAction(PageAction.next);
+        break;
+      default:
+        break;
+    }
+  }
+
+  void _handleRawKeyMacOS(var data) {
+    switch (data.keyCode) {
+      case 20:
+      case 21:
+      case MacOSKeys.leftKey:
+      case MacOSKeys.pageUpKey:
+      case MacOSKeys.upKey:
+        _sendAction(PageAction.previous);
+        break;
+      case 19:
+      case 22:
+      case MacOSKeys.rightKey:
+      case MacOSKeys.pageDownKey:
+      case MacOSKeys.downKey:
+        _sendAction(PageAction.next);
+        break;
+      default:
+        break;
     }
   }
 
