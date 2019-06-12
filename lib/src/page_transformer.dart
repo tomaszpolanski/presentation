@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 class ScrollNotifier extends StatefulWidget {
   const ScrollNotifier({Key key, this.child}) : super(key: key);

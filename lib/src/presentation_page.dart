@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 class PresentationPage extends StatelessWidget {
   const PresentationPage({Key key, this.title, this.child}) : super(key: key);

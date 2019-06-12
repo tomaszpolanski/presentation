@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter_web/material.dart';
 import 'package:presentation/src/page_transformer.dart';
 import 'package:presentation/src/presentation.dart';
 

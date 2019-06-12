@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_web/material.dart';
 
 const pageUpKey = 266;
 const pageDownKey = 267;

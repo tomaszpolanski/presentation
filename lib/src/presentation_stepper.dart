@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter_web/material.dart';
 import 'package:presentation/src/presentation_controller.dart';
 
 class PageStepper<T> extends Listenable {
