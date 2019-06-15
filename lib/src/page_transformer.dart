@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ScrollNotifier extends StatefulWidget {
-  const ScrollNotifier({Key key, this.child}) : super(key: key);
+  const ScrollNotifier({
+    Key key,
+    @required this.child,
+  }) : super(key: key);
 
   final Widget child;
 
@@ -17,6 +20,7 @@ class _ScrollNotifierState extends State<ScrollNotifier> {
     return NotificationListener<ScrollNotification>(
       onNotification: (ScrollNotification notification) {
         setState(() => metrics = notification.metrics);
+        return false;
       },
       child: ScrollSettings(
         metrics: metrics,

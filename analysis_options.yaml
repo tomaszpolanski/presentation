@@ -8,10 +8,7 @@ analyzer:
     missing_return: error
     # allow having TODOs in the code
     todo: ignore
-  exclude:
-    - dependencies/**
-    - lib/generated/**
-    
+
 linter:
   rules:
     - always_declare_return_types

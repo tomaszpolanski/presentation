@@ -1,5 +1,5 @@
-import 'package:presentation/src/page_transformer.dart';
 import 'package:flutter/material.dart';
+import 'package:presentation/src/page_transformer.dart';
 import 'package:presentation/src/presentation_controller.dart';
 
 class Presentation extends StatelessWidget {
@@ -54,29 +54,13 @@ class PageViewSettings extends InheritedWidget {
 
   final int index;
 
-  static PageViewSettings of(BuildContext context) {
-    final PageViewSettings widget =
-        context.inheritFromWidgetOfExactType(PageViewSettings);
-    return widget;
-  }
+  static PageViewSettings of(BuildContext context) =>
+      context.inheritFromWidgetOfExactType(PageViewSettings);
 
   @override
   bool updateShouldNotify(PageViewSettings oldWidget) =>
       index != oldWidget.index;
 }
-
-// class PresentationSettings extends InheritedWidget {
-//   const PresentationSettings({
-//     Key key,
-//     this.controller,
-//     Widget child,
-//   }) : super(key: key, child: child);
-
-//   final PresentationController controller;
-
-//   @override
-//   bool updateShouldNotify(InheritedWidget oldWidget) => false;
-// }
 
 /// Based on https://github.com/roughike/page-transformer
 /// A class that can be used to compute visibility information about

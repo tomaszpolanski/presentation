@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:presentation/src/page_transformer.dart';
 import 'package:presentation/src/presentation.dart';
@@ -28,6 +29,12 @@ class ParallaxWidget extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DoubleProperty('translationFactor', translationFactor));
+  }
 }
 
 class ParallaxImage extends StatelessWidget {
@@ -49,5 +56,11 @@ class ParallaxImage extends StatelessWidget {
       fit: BoxFit.fitHeight,
       alignment: Alignment(visibility.pagePosition, 0),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('asset', asset, showName: false));
   }
 }

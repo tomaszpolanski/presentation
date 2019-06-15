@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class PresentationPage extends StatelessWidget {
-  const PresentationPage({Key key, this.title, this.child}) : super(key: key);
+  const PresentationPage({
+    Key key,
+    this.title,
+    this.child,
+  }) : super(key: key);
 
   final Widget title;
   final Widget child;
