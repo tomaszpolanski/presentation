@@ -48,46 +48,33 @@ class PresentationController {
   void _handleKey(RawKeyEvent value) {
     if (value is RawKeyUpEvent) {
       print(value.data);
-      if (value.data is RawKeyEventDataMacOs) {
-        final RawKeyEventDataMacOs data = value.data;
-        _handleRawKeyMacOS(data);
-      }
-      if (value.data is RawKeyEventDataLinux) {
-        final RawKeyEventDataLinux data = value.data;
-        _handleRawKeyAndroid(data);
-      }
-      if (value.data is RawKeyEventDataAndroid) {
-        final RawKeyEventDataAndroid data = value.data;
-        _handleRawKeyAndroid(data);
-      }
+      _handleRawKeys(_returnKeyCode(value));
     }
   }
 
-  void _handleRawKeyAndroid(var data) {
-    switch (data.keyCode) {
+  int _returnKeyCode(RawKeyEvent value){
+    switch (value.data.runtimeType){
+        case RawKeyEventDataLinux:
+          final RawKeyEventDataLinux data = value.data;
+          return data.keyCode;
+        case RawKeyEventDataMacOs:
+          final RawKeyEventDataMacOs data = value.data;
+          return data.keyCode;
+        case RawKeyEventDataAndroid:
+          final RawKeyEventDataAndroid data = value.data;
+          return data.keyCode;
+        default:
+          return -1;
+      }
+  }
+
+  void _handleRawKeys(int keyCode){
+    switch (keyCode) {
       case 20:
       case 21:
       case AndroidKeys.leftKey:
       case AndroidKeys.pageUpKey:
       case AndroidKeys.upKey:
-        _sendAction(PageAction.previous);
-        break;
-      case 19:
-      case 22:
-      case AndroidKeys.rightKey:
-      case AndroidKeys.pageDownKey:
-      case AndroidKeys.downKey:
-        _sendAction(PageAction.next);
-        break;
-      default:
-        break;
-    }
-  }
-
-  void _handleRawKeyMacOS(var data) {
-    switch (data.keyCode) {
-      case 20:
-      case 21:
       case MacOSKeys.leftKey:
       case MacOSKeys.pageUpKey:
       case MacOSKeys.upKey:
@@ -95,6 +82,9 @@ class PresentationController {
         break;
       case 19:
       case 22:
+      case AndroidKeys.rightKey:
+      case AndroidKeys.pageDownKey:
+      case AndroidKeys.downKey:
       case MacOSKeys.rightKey:
       case MacOSKeys.pageDownKey:
       case MacOSKeys.downKey:
