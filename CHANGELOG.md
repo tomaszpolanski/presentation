@@ -1,3 +1,6 @@
+## [0.0.5]
+* Fixed keyboard navigation on MacOs - by [PakoSt](https://github.com/psstoyanov)
+
 ## [0.0.4]
 
 Adding new widgets:
