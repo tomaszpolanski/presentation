@@ -25,7 +25,7 @@ class Presentation extends StatelessWidget {
         ];
       },
       body: GestureDetector(
-        key: Key('presentation'),
+        key: const Key('presentation'),
         onTap: presentationController.nextStep,
         onDoubleTap: presentationController.previousStep,
         child: ScrollNotifier(

@@ -71,3 +71,4 @@ build/
 *.arb
 pubspec.lock
 .metadata
+lib/generated/i18n.dart
