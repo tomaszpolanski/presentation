@@ -21,7 +21,6 @@ class MacOSKeys {
   static const upKey = 126;
 }
 
-
 class PresentationController {
   PresentationController({@required this.controller})
       : assert(controller != null) {
@@ -52,23 +51,23 @@ class PresentationController {
     }
   }
 
-  int _returnKeyCode(RawKeyEvent value){
-    switch (value.data.runtimeType){
-        case RawKeyEventDataLinux:
-          final RawKeyEventDataLinux data = value.data;
-          return data.keyCode;
-        case RawKeyEventDataMacOs:
-          final RawKeyEventDataMacOs data = value.data;
-          return data.keyCode;
-        case RawKeyEventDataAndroid:
-          final RawKeyEventDataAndroid data = value.data;
-          return data.keyCode;
-        default:
-          return -1;
-      }
+  int _returnKeyCode(RawKeyEvent value) {
+    switch (value.data.runtimeType) {
+      case RawKeyEventDataLinux:
+        final RawKeyEventDataLinux data = value.data;
+        return data.keyCode;
+      case RawKeyEventDataMacOs:
+        final RawKeyEventDataMacOs data = value.data;
+        return data.keyCode;
+      case RawKeyEventDataAndroid:
+        final RawKeyEventDataAndroid data = value.data;
+        return data.keyCode;
+      default:
+        return -1;
+    }
   }
 
-  void _handleRawKeys(int keyCode){
+  void _handleRawKeys(int keyCode) {
     switch (keyCode) {
       case 20:
       case 21:
