@@ -23,7 +23,7 @@ class _RevealEffectState extends State<RevealEffect>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     )..forward();
     super.initState();
   }

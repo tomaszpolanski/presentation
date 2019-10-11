@@ -30,7 +30,7 @@ class _AnimatedParallaxImageState extends State<AnimatedParallaxImage>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 160),
+      duration: const Duration(seconds: 160),
     );
     super.initState();
   }

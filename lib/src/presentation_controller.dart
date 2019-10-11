@@ -21,6 +21,13 @@ class MacOSKeys {
   static const upKey = 126;
 }
 
+class WindowsKeys {
+  static const leftKey = 37;
+  static const rightKey = 39;
+  static const pageUpKey = 38;
+  static const pageDownKey = 40;
+}
+
 class PresentationController {
   PresentationController({@required this.controller})
       : assert(controller != null) {
@@ -74,6 +81,8 @@ class PresentationController {
       case AndroidKeys.leftKey:
       case AndroidKeys.pageUpKey:
       case AndroidKeys.upKey:
+      case WindowsKeys.leftKey:
+      case WindowsKeys.pageUpKey:
       case MacOSKeys.leftKey:
       case MacOSKeys.pageUpKey:
       case MacOSKeys.upKey:
@@ -84,6 +93,8 @@ class PresentationController {
       case AndroidKeys.rightKey:
       case AndroidKeys.pageDownKey:
       case AndroidKeys.downKey:
+      case WindowsKeys.rightKey:
+      case WindowsKeys.pageDownKey:
       case MacOSKeys.rightKey:
       case MacOSKeys.pageDownKey:
       case MacOSKeys.downKey:
@@ -119,14 +130,14 @@ class PresentationController {
 
   void previousSlide() {
     controller.previousPage(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOut,
     );
   }
 
   void nextSlide() {
     controller.nextPage(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOut,
     );
   }
