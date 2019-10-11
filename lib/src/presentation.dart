@@ -4,11 +4,16 @@ import 'package:presentation/src/presentation_controller.dart';
 
 class Presentation extends StatelessWidget {
   const Presentation({
-    Key key,
     @required this.children,
     @required this.controller,
     @required this.presentationController,
+    this.enableMouseNavigation = true,
+    Key key,
   }) : super(key: key);
+
+  /// Allows navigating to next slide with single tap and to previous slide
+  /// with double tap
+  final bool enableMouseNavigation;
 
   final List<Widget> children;
   final PageController controller;
@@ -26,8 +31,9 @@ class Presentation extends StatelessWidget {
       },
       body: GestureDetector(
         key: const Key('presentation'),
-        onTap: presentationController.nextStep,
-        onDoubleTap: presentationController.previousStep,
+        onTap: enableMouseNavigation ? presentationController.nextStep : null,
+        onDoubleTap:
+            enableMouseNavigation ? presentationController.previousStep : null,
         child: ScrollNotifier(
           child: PageView.builder(
             controller: controller,

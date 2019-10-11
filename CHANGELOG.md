@@ -1,3 +1,7 @@
+## [0.0.6]
+* Added `enableMouseNavigation` - enables/disables navigation between slides with single and double tap
+* Fixed keyboard navigation on Windows in Flutter 1.10.2 and newer
+
 ## [0.0.5]
 * Fixed keyboard navigation on MacOs - by [PakoSt](https://github.com/psstoyanov)
 
