@@ -1,14 +1,16 @@
 name: presentation
 description: Set of tools providing presentation capabilities (tansitions, animation, navigation,...) to a Flutter application
-version: 0.0.6
+version: 0.0.7
 author: Tomek Polański <polanski.tomek@gmail.com>
 homepage: https://github.com/tomaszpolanski/presentation
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
 dev_dependencies:

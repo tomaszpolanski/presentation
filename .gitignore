@@ -72,3 +72,4 @@ build/
 pubspec.lock
 .metadata
 lib/generated/i18n.dart
+example/ios/Flutter/flutter_export_environment.sh
