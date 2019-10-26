@@ -1,3 +1,6 @@
+## [0.0.8]
+Removing dependency on `flutter_localizations`
+
 ## [0.0.7]
 * Added `AppFrame` - Displays Application Frame - all animations in [Flutter Animations Cheat Sheet](https://flutter-animations-cheat-sheet.codemagic.app/#/) 
 are using it - usage can be found [here](https://github.com/tomaszpolanski/flutter-animations/blob/master/lib/shared/frame.dart)
