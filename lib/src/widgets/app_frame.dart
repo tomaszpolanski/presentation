@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class AppFrame extends StatelessWidget {
   const AppFrame({
     Key key,
     @required this.title,
+    this.time,
     @required this.child,
   })  : assert(child != null),
         super(key: key);
 
   final Widget title;
+  final Widget time;
   final Widget child;
 
   @override
@@ -43,11 +44,18 @@ class AppFrame extends StatelessWidget {
                 color: Colors.white,
                 size: 18,
               ),
-              Text(
-                DateFormat.Hm().format(DateTime.now()),
+              DefaultTextStyle.merge(
                 style: Theme.of(context).textTheme.body2.copyWith(
                       color: Colors.white,
                       fontFamily: 'Roboto',
+                    ),
+                child: time ??
+                    Builder(
+                      builder: (context) {
+                        final now = DateTime.now();
+                        return Text(
+                            '${_twoDigits(now.hour)}:${_twoDigits(now.minute)}');
+                      },
                     ),
               ),
             ],
@@ -57,3 +65,5 @@ class AppFrame extends StatelessWidget {
     );
   }
 }
+
+String _twoDigits(int n) => n >= 10 ? '$n' : '0$n';
