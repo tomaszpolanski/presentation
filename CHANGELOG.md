@@ -1,3 +1,6 @@
+## [0.0.9]
+Adding simple Markdown editor.
+
 ## [0.0.8]
 Removing dependency on `flutter_localizations`
 

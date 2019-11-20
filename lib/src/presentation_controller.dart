@@ -53,7 +53,6 @@ class PresentationController {
 
   void _handleKey(RawKeyEvent value) {
     if (value is RawKeyUpEvent) {
-      print(value.data);
       _handleRawKeys(_returnKeyCode(value));
     }
   }
@@ -115,6 +114,7 @@ class PresentationController {
           previousSlide();
           break;
         default:
+          // ignore: avoid_print
           print('Unknown action: $action');
       }
     } else {
