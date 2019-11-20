@@ -1,3 +1,6 @@
+## [0.0.9+1]
+Passing style to Markdown editor.
+
 ## [0.0.9]
 Adding simple Markdown editor.
 

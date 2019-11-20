@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:presentation/src/utils/split.dart';
 
 class Markdown extends StatelessWidget {
-  const Markdown(this.data, {Key key}) : super(key: key);
+  const Markdown(
+    this.data, {
+    this.style,
+    Key key,
+  }) : super(key: key);
 
   final String data;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,10 @@ class Markdown extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: lines.length,
-        itemBuilder: (context, index) => MarkdownLine(lines[index]),
+        itemBuilder: (context, index) => MarkdownLine(
+          lines[index],
+          style: style,
+        ),
       ),
     );
   }
@@ -23,10 +31,12 @@ class Markdown extends StatelessWidget {
 class MarkdownLine extends StatelessWidget {
   const MarkdownLine(
     this.data, {
+    this.style,
     Key key,
   }) : super(key: key);
 
   final String data;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -36,26 +46,28 @@ class MarkdownLine extends StatelessWidget {
       ),
     );
   }
-}
 
-Iterable<InlineSpan> _createBold(String word) => splitMapJoin(
-      word,
-      RegExp(r'\*\*([a-zA-Z\.]+)\*\*'),
-      onMatch: (m) {
-        return TextSpan(
-          text: m.group(1),
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        );
-      },
-      onNonMatch: _createItalic,
-    );
-
-Iterable<InlineSpan> _createItalic(String word) =>
-    splitMapJoin(word, RegExp(r'\*([a-zA-Z\.]+)\*'),
+  Iterable<InlineSpan> _createBold(String word) => splitMapJoin(
+        word,
+        RegExp(r'\*\*([a-zA-Z\.]+)\*\*'),
         onMatch: (m) {
           return TextSpan(
             text: m.group(1),
-            style: const TextStyle(fontStyle: FontStyle.italic),
+            style: (style ?? const TextStyle())
+                .copyWith(fontWeight: FontWeight.bold),
           );
         },
-        onNonMatch: (m) => [TextSpan(text: m)]);
+        onNonMatch: _createItalic,
+      );
+
+  Iterable<InlineSpan> _createItalic(String word) =>
+      splitMapJoin(word, RegExp(r'\*([a-zA-Z\.]+)\*'),
+          onMatch: (m) {
+            return TextSpan(
+              text: m.group(1),
+              style: (style ?? const TextStyle())
+                  .copyWith(fontStyle: FontStyle.italic),
+            );
+          },
+          onNonMatch: (m) => [TextSpan(text: m)]);
+}
