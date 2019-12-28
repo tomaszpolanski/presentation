@@ -10,6 +10,7 @@ jobs:
     - uses: subosito/flutter-action@v1.1.1
       with:
         flutter-version: 'v1.12.13+hotfix.6'
+        channel: 'dev'
     - run: flutter pub get
     - run: flutter analyze
     - run: flutter test
