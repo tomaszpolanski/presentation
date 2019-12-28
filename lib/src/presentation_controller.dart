@@ -113,9 +113,6 @@ class PresentationController {
         case PageAction.previous:
           previousSlide();
           break;
-        default:
-          // ignore: avoid_print
-          print('Unknown action: $action');
       }
     } else {
       for (final ValueChanged<PageAction> listener in _listeners) {

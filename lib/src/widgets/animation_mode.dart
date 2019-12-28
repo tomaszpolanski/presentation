@@ -12,8 +12,7 @@ class AnimationMode extends InheritedWidget {
   final bool enabled;
 
   static bool of(BuildContext context) {
-    final AnimationMode widget =
-        context.inheritFromWidgetOfExactType(AnimationMode);
+    final AnimationMode widget = context.dependOnInheritedWidgetOfExactType();
     return widget?.enabled ?? true;
   }
 

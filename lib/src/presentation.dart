@@ -61,7 +61,7 @@ class PageViewSettings extends InheritedWidget {
   final int index;
 
   static PageViewSettings of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(PageViewSettings);
+      context.dependOnInheritedWidgetOfExactType();
 
   @override
   bool updateShouldNotify(PageViewSettings oldWidget) =>
