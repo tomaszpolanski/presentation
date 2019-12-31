@@ -6,6 +6,12 @@ analyzer:
     missing_required_param: error
     missing_return: error
     todo: ignore
+  strong-mode:
+    implicit-dynamic: false
+    implicit-casts: false
+  language:
+    strict-inference: true
+    strict-raw-types: true
 
 linter:
   rules:

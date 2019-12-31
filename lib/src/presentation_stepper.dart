@@ -10,7 +10,7 @@ class PageStepper<T> extends Listenable {
   final List<T> steps;
   final PresentationController controller;
   T _currentStep;
-  final List<_StepTransition> _transitions = <_StepTransition>[];
+  final List<_StepTransition<T>> _transitions = [];
   VoidCallback _listenable;
 
   void addStep(
@@ -18,7 +18,7 @@ class PageStepper<T> extends Listenable {
     T nextStep,
     VoidCallback transition,
   ) {
-    _transitions.add(_StepTransition(
+    _transitions.add(_StepTransition<T>(
       currentStep: currentStep,
       nextStep: nextStep,
       transition: transition,
@@ -34,13 +34,13 @@ class PageStepper<T> extends Listenable {
     assert(fromStep != null);
     assert(toStep != null);
     assert(forward != null);
-    _transitions.add(_StepTransition(
+    _transitions.add(_StepTransition<T>(
       currentStep: fromStep,
       nextStep: toStep,
       transition: forward,
     ));
     if (reverse != null) {
-      _transitions.add(_StepTransition(
+      _transitions.add(_StepTransition<T>(
         currentStep: toStep,
         nextStep: fromStep,
         transition: reverse,

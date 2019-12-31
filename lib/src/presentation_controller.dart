@@ -58,18 +58,15 @@ class PresentationController {
   }
 
   int _returnKeyCode(RawKeyEvent value) {
-    switch (value.data.runtimeType) {
-      case RawKeyEventDataLinux:
-        final RawKeyEventDataLinux data = value.data;
-        return data.keyCode;
-      case RawKeyEventDataMacOs:
-        final RawKeyEventDataMacOs data = value.data;
-        return data.keyCode;
-      case RawKeyEventDataAndroid:
-        final RawKeyEventDataAndroid data = value.data;
-        return data.keyCode;
-      default:
-        return -1;
+    final data = value.data;
+    if (data is RawKeyEventDataLinux) {
+      return data.keyCode;
+    } else if (data is RawKeyEventDataMacOs) {
+      return data.keyCode;
+    } else if (data is RawKeyEventDataAndroid) {
+      return data.keyCode;
+    } else {
+      return -1;
     }
   }
 
