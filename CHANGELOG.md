@@ -1,3 +1,9 @@
+## [0.0.10+1]
+Adding style to `Markdown`.
+
+## [0.0.10]
+Updating flutter version and other cleanup.
+
 ## [0.0.9]
 Adding simple Markdown editor.
 
