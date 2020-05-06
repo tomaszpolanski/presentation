@@ -5,10 +5,11 @@ import 'package:presentation/presentation.dart';
 void main() {
   // Enables rendering on desktop
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
-  runApp(PresentationExample());
+  runApp(const PresentationExample());
 }
 
 class PresentationExample extends StatefulWidget {
+  const PresentationExample({Key key}) : super(key: key);
   @override
   _PresentationExampleState createState() => _PresentationExampleState();
 }

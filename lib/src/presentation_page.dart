@@ -18,7 +18,7 @@ class PresentationPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: DefaultTextStyle(
-          style: Theme.of(context).textTheme.display1.copyWith(
+          style: Theme.of(context).textTheme.headline4.copyWith(
                 color: const Color(0xFF6AA84F),
                 fontWeight: FontWeight.bold,
               ),

@@ -10,8 +10,8 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
-    - uses: subosito/flutter-action@v1.1.1
+    - uses: subosito/flutter-action@v1.2.0
       with:
-        channel: 'beta'
+        channel: 'dev'
     - run: flutter pub get
     - run: flutter analyze

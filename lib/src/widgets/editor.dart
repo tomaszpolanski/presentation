@@ -121,7 +121,7 @@ Iterable<InlineSpan> _createWidget(
         final index = int.parse(m.group(1));
         assert(
             index < widgetSpans.length,
-            'You need to provide at least the amount of'
+            'You need to provide at least the amount of '
             'widget spans as you provider placeholders in the data');
         return WidgetSpan(
           child: widgetSpans[index],
@@ -138,7 +138,7 @@ Iterable<InlineSpan> _createSpaces(String data, Animation<double> animation) =>
 
 Iterable<InlineSpan> _createStrings(String word, Animation<double> animation) =>
     _createSpans(
-      RegExp(r"'.+'"),
+      RegExp("'.+'"),
       EditorColor.text,
       _createKeywords,
       fontWeight: FontWeight.w700,
@@ -200,7 +200,7 @@ Iterable<InlineSpan> _createNumber(String word, Animation<double> animation) =>
 
 Iterable<InlineSpan> _createSeparator(
         String word, Animation<double> animation) =>
-    _createSpans(RegExp(r'[,;]'), EditorColor.keyword, _createWords)(
+    _createSpans(RegExp('[,;]'), EditorColor.keyword, _createWords)(
       word,
       animation,
     );

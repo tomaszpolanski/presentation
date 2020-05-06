@@ -45,7 +45,7 @@ class AppFrame extends StatelessWidget {
                 size: 18,
               ),
               DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.body2.copyWith(
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
                       color: Colors.white,
                       fontFamily: 'Roboto',
                     ),
