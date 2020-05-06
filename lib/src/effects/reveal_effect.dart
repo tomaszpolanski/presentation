@@ -45,7 +45,6 @@ class _RevealEffectState extends State<RevealEffect>
         );
       },
       child: Align(
-        alignment: Alignment.center,
         child: widget.child,
       ),
     );
