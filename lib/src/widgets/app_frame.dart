@@ -21,7 +21,6 @@ class AppFrame extends StatelessWidget {
           data: const MediaQueryData(padding: EdgeInsets.only(top: 20)),
           child: Scaffold(
             appBar: AppBar(
-              primary: true,
               title: title,
             ),
             body: Align(child: child),
@@ -34,12 +33,12 @@ class AppFrame extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Icon(
+              const Icon(
                 Icons.signal_cellular_4_bar,
                 color: Colors.white,
                 size: 18,
               ),
-              Icon(
+              const Icon(
                 Icons.battery_charging_full,
                 color: Colors.white,
                 size: 18,
