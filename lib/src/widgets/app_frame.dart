@@ -34,12 +34,12 @@ class AppFrame extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Icon(
+              const Icon(
                 Icons.signal_cellular_4_bar,
                 color: Colors.white,
                 size: 18,
               ),
-              Icon(
+              const Icon(
                 Icons.battery_charging_full,
                 color: Colors.white,
                 size: 18,
