@@ -15,7 +15,6 @@ class Markdown extends StatelessWidget {
   Widget build(BuildContext context) {
     final lines = data.split('\r\n');
     return IgnorePointer(
-      ignoring: true,
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: lines.length,

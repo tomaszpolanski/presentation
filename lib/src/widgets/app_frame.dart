@@ -21,7 +21,6 @@ class AppFrame extends StatelessWidget {
           data: const MediaQueryData(padding: EdgeInsets.only(top: 20)),
           child: Scaffold(
             appBar: AppBar(
-              primary: true,
               title: title,
             ),
             body: Align(child: child),
