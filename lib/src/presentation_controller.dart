@@ -65,6 +65,8 @@ class PresentationController {
       return data.keyCode;
     } else if (data is RawKeyEventDataAndroid) {
       return data.keyCode;
+    } else if (data is RawKeyEventDataWindows) {
+      return data.keyCode;
     } else {
       return -1;
     }

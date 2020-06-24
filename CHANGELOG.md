@@ -1,3 +1,6 @@
+## [0.0.10+3]
+Fixing keyboard navigation on Windows
+
 ## [0.0.10+2]
 Updating to Flutter `1.19.0-4.1`.
 
