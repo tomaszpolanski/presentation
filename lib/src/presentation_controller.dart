@@ -29,12 +29,15 @@ class WindowsKeys {
 }
 
 class PresentationController {
-  PresentationController({@required this.controller})
-      : assert(controller != null) {
+  PresentationController({
+    @required this.controller,
+    this.animationDuration = const Duration(milliseconds: 300),
+  }) : assert(controller != null) {
     _keyboard.addListener(_handleKey);
   }
 
   final PageController controller;
+  final Duration animationDuration;
   final RawKeyboard _keyboard = RawKeyboard.instance;
   final List<ValueChanged<PageAction>> _listeners =
       <ValueChanged<PageAction>>[];
@@ -64,6 +67,8 @@ class PresentationController {
     } else if (data is RawKeyEventDataMacOs) {
       return data.keyCode;
     } else if (data is RawKeyEventDataAndroid) {
+      return data.keyCode;
+    } else if (data is RawKeyEventDataWindows) {
       return data.keyCode;
     } else {
       return -1;
@@ -124,14 +129,14 @@ class PresentationController {
 
   void previousSlide() {
     controller.previousPage(
-      duration: const Duration(milliseconds: 300),
+      duration: animationDuration,
       curve: Curves.easeOut,
     );
   }
 
   void nextSlide() {
     controller.nextPage(
-      duration: const Duration(milliseconds: 300),
+      duration: animationDuration,
       curve: Curves.easeOut,
     );
   }
