@@ -1,6 +1,6 @@
 name: presentation
 description: Set of tools providing presentation capabilities (tansitions, animation, navigation,...) to a Flutter application
-version: 0.0.10+3
+version: 0.0.11
 homepage: https://github.com/tomaszpolanski/presentation
 
 environment:

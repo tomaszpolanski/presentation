@@ -1,3 +1,6 @@
+## [0.0.11]
+Allowing code size change
+
 ## [0.0.10+3]
 Fixing keyboard navigation on Windows
 
