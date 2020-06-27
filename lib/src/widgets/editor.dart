@@ -9,6 +9,7 @@ class Editor extends StatefulWidget {
     this.brightness = Brightness.dark,
     this.padding = EdgeInsets.zero,
     this.nested = false,
+    this.fontSize = 20,
     this.children = const [],
   }) : super(key: key);
 
@@ -16,6 +17,7 @@ class Editor extends StatefulWidget {
   final Brightness brightness;
   final EdgeInsetsGeometry padding;
   final bool nested;
+  final double fontSize;
   final List<Widget> children;
 
   @override
@@ -68,6 +70,7 @@ class _EditorState extends State<Editor> with SingleTickerProviderStateMixin {
             return EditorLine(
               lines[index],
               animation: _controller,
+              fontSize: widget.fontSize,
               children: widget.children,
             );
           },
@@ -82,11 +85,13 @@ class EditorLine extends StatelessWidget {
     this.data, {
     @required this.animation,
     @required this.children,
+    this.fontSize = 20,
     Key key,
   }) : super(key: key);
 
   final String data;
   final Animation<double> animation;
+  final double fontSize;
   final List<Widget> children;
 
   @override
@@ -103,7 +108,7 @@ class EditorLine extends StatelessWidget {
         fontFamily: 'Consolas',
         fontWeight: FontWeight.w300,
         color: EditorColor.plain.lerp(animation.value),
-        fontSize: 20,
+        fontSize: fontSize,
       ),
     );
   }
