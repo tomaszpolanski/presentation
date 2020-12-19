@@ -8,15 +8,12 @@ export 'package:presentation/presentation.dart';
 class AnimatedParallaxImage extends StatefulWidget {
   const AnimatedParallaxImage({
     Key? key,
-    this.child,
     required this.asset,
     this.opacity = 1,
   }) : super(key: key);
 
   final String asset;
   final double opacity;
-
-  final Widget? child;
 
   @override
   _AnimatedParallaxImageState createState() => _AnimatedParallaxImageState();

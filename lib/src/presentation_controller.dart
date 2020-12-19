@@ -32,7 +32,7 @@ class PresentationController {
   PresentationController({
     required this.controller,
     this.animationDuration = const Duration(milliseconds: 300),
-  }) : assert(controller != null) {
+  }) {
     _keyboard.addListener(_handleKey);
   }
 

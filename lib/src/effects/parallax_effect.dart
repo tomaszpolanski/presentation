@@ -17,7 +17,7 @@ class ParallaxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = ScrollSettings.of(context);
     final resolver = PageVisibilityResolver(metrics: result);
-    final index = PageViewSettings.of(context)!.index;
+    final index = PageViewSettings.of(context).index;
     final visibility = resolver.resolvePageVisibility(index);
     final double xTranslation = visibility.pagePosition * 100;
     return Opacity(
@@ -49,7 +49,7 @@ class ParallaxImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = ScrollSettings.of(context);
     final resolver = PageVisibilityResolver(metrics: result);
-    final index = PageViewSettings.of(context)!.index;
+    final index = PageViewSettings.of(context).index;
     final visibility = resolver.resolvePageVisibility(index);
     return Image.asset(
       asset,

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class PresentationPage extends StatelessWidget {
   const PresentationPage({
     Key? key,
-    this.title,
+    required this.title,
     this.child,
   }) : super(key: key);
 
-  final Widget? title;
+  final Widget title;
   final Widget? child;
 
   @override
@@ -22,7 +22,7 @@ class PresentationPage extends StatelessWidget {
                 color: const Color(0xFF6AA84F),
                 fontWeight: FontWeight.bold,
               ),
-          child: title!,
+          child: title,
         ),
       ),
       body: child,

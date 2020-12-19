@@ -31,9 +31,6 @@ class PageStepper<T> extends Listenable {
     required VoidCallback forward,
     VoidCallback? reverse,
   }) {
-    assert(fromStep != null);
-    assert(toStep != null);
-    assert(forward != null);
     _transitions.add(_StepTransition<T>(
       currentStep: fromStep,
       nextStep: toStep,
@@ -67,13 +64,16 @@ class PageStepper<T> extends Listenable {
   }
 
   T _tryTransition({required T current, required T next}) {
-    final transition = _transitions.firstWhere((transition) =>
-        transition.currentStep == _currentStep && transition.nextStep == next);
+    final _StepTransition<T>? t = _transitions.firstWhereOrNull(
+      (transition) =>
+          transition.currentStep == _currentStep && transition.nextStep == next,
+    );
 
-    if (transition != null) {
-      transition.transition!();
-      if (_listenable != null) {
-        _listenable!();
+    if (t != null) {
+      t.transition();
+      final l = _listenable;
+      if (l != null) {
+        l();
       }
       return next;
     } else {
@@ -123,12 +123,23 @@ class PageStepper<T> extends Listenable {
 
 class _StepTransition<T> {
   const _StepTransition({
-    this.currentStep,
-    this.nextStep,
-    this.transition,
+    required this.currentStep,
+    required this.nextStep,
+    required this.transition,
   });
 
-  final T? currentStep;
-  final T? nextStep;
-  final VoidCallback? transition;
+  final T currentStep;
+  final T nextStep;
+  final VoidCallback transition;
+}
+
+extension ListEx<E> on List<E> {
+  E? firstWhereOrNull(bool Function(E element) test) {
+    for (final E element in this) {
+      if (test(element)) {
+        return element;
+      }
+    }
+    return null;
+  }
 }
