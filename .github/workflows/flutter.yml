@@ -1,5 +1,4 @@
-
-on: [push, pull_request]
+on: [ push, pull_request ]
 name: Analyze and Test
 jobs:
   build:
@@ -14,5 +13,5 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: ${{ matrix.channel }}
-    - run: flutter pub get
-    - run: flutter analyze
+      - run: flutter pub get
+      - run: flutter analyze
