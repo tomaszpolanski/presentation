@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 
 class AnimationMode extends InheritedWidget {
   const AnimationMode({
-    Key key,
-    @required this.enabled,
-    Widget child,
-  })  : assert(enabled != null),
-        super(key: key, child: child);
+    Key? key,
+    required this.enabled,
+    required Widget child,
+  }) : super(key: key, child: child);
 
   final bool enabled;
 
   static bool of(BuildContext context) {
-    final AnimationMode widget = context.dependOnInheritedWidgetOfExactType();
+    final AnimationMode? widget = context.dependOnInheritedWidgetOfExactType();
     return widget?.enabled ?? true;
   }
 

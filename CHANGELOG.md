@@ -1,3 +1,7 @@
+
+## [1.0.0-nullsafety.0]
+Migrating to null safety
+
 ## [0.0.11]
 Allowing code size change
 

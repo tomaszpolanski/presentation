@@ -3,8 +3,8 @@ import 'package:presentation/src/widgets/animation_builder.dart';
 
 class RevealEffect extends StatefulWidget {
   const RevealEffect({
-    Key key,
-    this.child,
+    Key? key,
+    required this.child,
     this.offset = const Offset(0, 0),
   }) : super(key: key);
 
@@ -17,7 +17,7 @@ class RevealEffect extends StatefulWidget {
 
 class _RevealEffectState extends State<RevealEffect>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -58,13 +58,13 @@ class _CircleRect extends CustomClipper<Rect> {
   });
 
   final double factor;
-  final Offset offset;
+  final Offset? offset;
 
   @override
   Rect getClip(Size size) {
     final newSize = size.longestSide * 2 * factor * 1.3;
     return Rect.fromCenter(
-      center: Offset(size.width * offset.dx, size.height * offset.dy),
+      center: Offset(size.width * offset!.dx, size.height * offset!.dy),
       width: newSize,
       height: newSize,
     );

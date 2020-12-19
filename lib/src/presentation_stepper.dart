@@ -3,15 +3,15 @@ import 'package:presentation/src/presentation_controller.dart';
 
 class PageStepper<T> extends Listenable {
   PageStepper({
-    @required this.controller,
-    @required this.steps,
+    required this.controller,
+    required this.steps,
   }) : _currentStep = steps.first;
 
   final List<T> steps;
   final PresentationController controller;
   T _currentStep;
   final List<_StepTransition<T>> _transitions = [];
-  VoidCallback _listenable;
+  VoidCallback? _listenable;
 
   void addStep(
     T currentStep,
@@ -26,14 +26,11 @@ class PageStepper<T> extends Listenable {
   }
 
   void add({
-    @required T fromStep,
-    @required T toStep,
-    @required VoidCallback forward,
-    VoidCallback reverse,
+    required T fromStep,
+    required T toStep,
+    required VoidCallback forward,
+    VoidCallback? reverse,
   }) {
-    assert(fromStep != null);
-    assert(toStep != null);
-    assert(forward != null);
     _transitions.add(_StepTransition<T>(
       currentStep: fromStep,
       nextStep: toStep,
@@ -66,14 +63,17 @@ class PageStepper<T> extends Listenable {
     }
   }
 
-  T _tryTransition({@required T current, @required T next}) {
-    final transition = _transitions.firstWhere((transition) =>
-        transition.currentStep == _currentStep && transition.nextStep == next);
+  T _tryTransition({required T current, required T next}) {
+    final _StepTransition<T>? t = _transitions.firstWhereOrNull(
+      (transition) =>
+          transition.currentStep == _currentStep && transition.nextStep == next,
+    );
 
-    if (transition != null) {
-      transition.transition();
-      if (_listenable != null) {
-        _listenable();
+    if (t != null) {
+      t.transition();
+      final l = _listenable;
+      if (l != null) {
+        l();
       }
       return next;
     } else {
@@ -98,12 +98,12 @@ class PageStepper<T> extends Listenable {
     }
   }
 
-  T _getNextStep(T current) {
+  T? _getNextStep(T current) {
     final currentIndex = steps.indexOf(_currentStep);
     return currentIndex + 1 < steps.length ? steps[currentIndex + 1] : null;
   }
 
-  T _getPreviousStep(T current) {
+  T? _getPreviousStep(T current) {
     final currentIndex = steps.indexOf(_currentStep);
     return currentIndex - 1 >= 0 ? steps[currentIndex - 1] : null;
   }
@@ -123,12 +123,23 @@ class PageStepper<T> extends Listenable {
 
 class _StepTransition<T> {
   const _StepTransition({
-    this.currentStep,
-    this.nextStep,
-    this.transition,
+    required this.currentStep,
+    required this.nextStep,
+    required this.transition,
   });
 
   final T currentStep;
   final T nextStep;
   final VoidCallback transition;
+}
+
+extension ListEx<E> on List<E> {
+  E? firstWhereOrNull(bool Function(E element) test) {
+    for (final E element in this) {
+      if (test(element)) {
+        return element;
+      }
+    }
+    return null;
+  }
 }

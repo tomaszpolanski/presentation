@@ -5,9 +5,9 @@ import 'package:presentation/src/presentation.dart';
 
 class ParallaxWidget extends StatelessWidget {
   const ParallaxWidget({
-    Key key,
+    Key? key,
     this.translationFactor = 100.0,
-    @required this.child,
+    required this.child,
   }) : super(key: key);
 
   final double translationFactor;
@@ -40,7 +40,7 @@ class ParallaxWidget extends StatelessWidget {
 class ParallaxImage extends StatelessWidget {
   const ParallaxImage(
     this.asset, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String asset;

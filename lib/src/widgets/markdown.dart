@@ -5,11 +5,11 @@ class Markdown extends StatelessWidget {
   const Markdown(
     this.data, {
     this.style,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String data;
-  final TextStyle style;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,11 @@ class MarkdownLine extends StatelessWidget {
   const MarkdownLine(
     this.data, {
     this.style,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String data;
-  final TextStyle style;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:presentation/src/widgets/colors.dart';
 class Editor extends StatefulWidget {
   const Editor(
     this.data, {
-    Key key,
+    Key? key,
     this.brightness = Brightness.dark,
     this.padding = EdgeInsets.zero,
     this.nested = false,
@@ -25,7 +25,7 @@ class Editor extends StatefulWidget {
 }
 
 class _EditorState extends State<Editor> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -83,10 +83,10 @@ class _EditorState extends State<Editor> with SingleTickerProviderStateMixin {
 class EditorLine extends StatelessWidget {
   const EditorLine(
     this.data, {
-    @required this.animation,
-    @required this.children,
+    required this.animation,
+    required this.children,
     this.fontSize = 20,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String data;
@@ -123,7 +123,7 @@ Iterable<InlineSpan> _createWidget(
       word,
       RegExp(r'{(\d+)}'),
       onMatch: (m) {
-        final index = int.parse(m.group(1));
+        final index = int.parse(m.group(1)!);
         assert(
             index < widgetSpans.length,
             'You need to provide at least the amount of '
@@ -169,12 +169,12 @@ Iterable<InlineSpan> _createValue(String word, Animation<double> animation) =>
       word,
       RegExp(r'[\.|_](?=([a-z][\w\d]+))\1(?!\()'),
       onMatch: (m) {
-        final first = m.group(0).substring(0, 1);
+        final first = m.group(0)!.substring(0, 1);
         return TextSpan(
           children: [
             if (first == '.') TextSpan(text: first),
             TextSpan(
-              text: m.group(0).replaceAll('.', ''),
+              text: m.group(0)!.replaceAll('.', ''),
               style: TextStyle(
                 fontFamily: 'Consolas',
                 fontWeight: FontWeight.w700,
@@ -212,7 +212,7 @@ Iterable<InlineSpan> _createSeparator(
 
 Iterable<InlineSpan> _createWords(
   String word,
-  Animation<double> animation,
+  Animation<double>? animation,
 ) sync* {
   if (_keywords.contains(word)) {
     yield TextSpan(
@@ -220,7 +220,7 @@ Iterable<InlineSpan> _createWords(
       style: TextStyle(
         fontFamily: 'Consolas',
         fontWeight: FontWeight.w700,
-        color: EditorColor.keyword.lerp(animation.value),
+        color: EditorColor.keyword.lerp(animation!.value),
       ),
     );
   } else if (_classes.contains(word)) {
@@ -228,7 +228,7 @@ Iterable<InlineSpan> _createWords(
       text: word,
       style: TextStyle(
         fontFamily: 'Consolas',
-        color: EditorColor.clazz.lerp(animation.value),
+        color: EditorColor.clazz.lerp(animation!.value),
       ),
     );
   } else {
@@ -245,7 +245,7 @@ _SpanCreator _createSpans(
   Pattern pattern,
   EditorColor color,
   _SpanCreator next, {
-  FontWeight fontWeight,
+  FontWeight? fontWeight,
 }) =>
     (String word, Animation<double> animation) => splitMapJoin(
           word,

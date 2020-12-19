@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 Iterable<InlineSpan> splitMapJoin(
   String data,
   Pattern pattern, {
-  InlineSpan Function(Match match) onMatch,
-  Iterable<InlineSpan> Function(String nonMatch) onNonMatch,
+  required InlineSpan Function(Match match) onMatch,
+  required Iterable<InlineSpan> Function(String nonMatch) onNonMatch,
 }) sync* {
   if (pattern is! Pattern) {
     throw ArgumentError('$pattern is not a Pattern');
