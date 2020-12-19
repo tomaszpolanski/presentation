@@ -6,8 +6,8 @@ import 'package:presentation/src/presentation.dart';
 
 class RotateWidget extends StatelessWidget {
   const RotateWidget({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   final Widget child;
@@ -16,7 +16,7 @@ class RotateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = ScrollSettings.of(context);
     final resolver = PageVisibilityResolver(metrics: result);
-    final index = PageViewSettings.of(context).index;
+    final index = PageViewSettings.of(context)!.index;
     final visibility = resolver.resolvePageVisibility(index);
 
     return Transform(

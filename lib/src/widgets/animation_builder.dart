@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 
 class WrappedAnimatedBuilder<T> extends StatelessWidget {
   const WrappedAnimatedBuilder({
-    Key key,
-    @required this.animation,
-    @required this.builder,
+    Key? key,
+    required this.animation,
+    required this.builder,
     this.child,
   }) : super(key: key);
 
@@ -12,9 +12,9 @@ class WrappedAnimatedBuilder<T> extends StatelessWidget {
   final Widget Function(
     BuildContext context,
     Animation<T> animation,
-    Widget child,
+    Widget? child,
   ) builder;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

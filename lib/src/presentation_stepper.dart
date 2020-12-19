@@ -3,15 +3,15 @@ import 'package:presentation/src/presentation_controller.dart';
 
 class PageStepper<T> extends Listenable {
   PageStepper({
-    @required this.controller,
-    @required this.steps,
+    required this.controller,
+    required this.steps,
   }) : _currentStep = steps.first;
 
   final List<T> steps;
   final PresentationController controller;
   T _currentStep;
   final List<_StepTransition<T>> _transitions = [];
-  VoidCallback _listenable;
+  VoidCallback? _listenable;
 
   void addStep(
     T currentStep,
@@ -26,10 +26,10 @@ class PageStepper<T> extends Listenable {
   }
 
   void add({
-    @required T fromStep,
-    @required T toStep,
-    @required VoidCallback forward,
-    VoidCallback reverse,
+    required T fromStep,
+    required T toStep,
+    required VoidCallback forward,
+    VoidCallback? reverse,
   }) {
     assert(fromStep != null);
     assert(toStep != null);
@@ -66,14 +66,14 @@ class PageStepper<T> extends Listenable {
     }
   }
 
-  T _tryTransition({@required T current, @required T next}) {
+  T _tryTransition({required T current, required T next}) {
     final transition = _transitions.firstWhere((transition) =>
         transition.currentStep == _currentStep && transition.nextStep == next);
 
     if (transition != null) {
-      transition.transition();
+      transition.transition!();
       if (_listenable != null) {
-        _listenable();
+        _listenable!();
       }
       return next;
     } else {
@@ -98,12 +98,12 @@ class PageStepper<T> extends Listenable {
     }
   }
 
-  T _getNextStep(T current) {
+  T? _getNextStep(T current) {
     final currentIndex = steps.indexOf(_currentStep);
     return currentIndex + 1 < steps.length ? steps[currentIndex + 1] : null;
   }
 
-  T _getPreviousStep(T current) {
+  T? _getPreviousStep(T current) {
     final currentIndex = steps.indexOf(_currentStep);
     return currentIndex - 1 >= 0 ? steps[currentIndex - 1] : null;
   }
@@ -128,7 +128,7 @@ class _StepTransition<T> {
     this.transition,
   });
 
-  final T currentStep;
-  final T nextStep;
-  final VoidCallback transition;
+  final T? currentStep;
+  final T? nextStep;
+  final VoidCallback? transition;
 }

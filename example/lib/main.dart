@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 
 void main() {
-  // Enables rendering on desktop
-  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   runApp(const PresentationExample());
 }
 

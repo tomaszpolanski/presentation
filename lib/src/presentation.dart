@@ -4,11 +4,11 @@ import 'package:presentation/src/presentation_controller.dart';
 
 class Presentation extends StatelessWidget {
   const Presentation({
-    @required this.children,
-    @required this.controller,
-    @required this.presentationController,
+    required this.children,
+    required this.controller,
+    required this.presentationController,
     this.enableMouseNavigation = true,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Allows navigating to next slide with single tap and to previous slide
@@ -53,14 +53,14 @@ class Presentation extends StatelessWidget {
 
 class PageViewSettings extends InheritedWidget {
   const PageViewSettings({
-    Key key,
-    @required this.index,
-    @required Widget child,
+    Key? key,
+    required this.index,
+    required Widget child,
   }) : super(key: key, child: child);
 
   final int index;
 
-  static PageViewSettings of(BuildContext context) =>
+  static PageViewSettings? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType();
 
   @override
@@ -73,13 +73,13 @@ class PageViewSettings extends InheritedWidget {
 /// the current page.
 class PageVisibilityResolver {
   const PageVisibilityResolver({
-    ScrollMetrics metrics,
-    double viewPortFraction,
+    ScrollMetrics? metrics,
+    double? viewPortFraction,
   })  : _pageMetrics = metrics,
         _viewPortFraction = viewPortFraction;
 
-  final ScrollMetrics _pageMetrics;
-  final double _viewPortFraction;
+  final ScrollMetrics? _pageMetrics;
+  final double? _viewPortFraction;
 
   /// Calculates visibility information for the page at [pageIndex].
   /// Used inside PageViews' itemBuilder, but can be also used in a
@@ -122,8 +122,8 @@ class PageVisibilityResolver {
 /// A class that contains visibility information about the current page.
 class PageVisibility {
   const PageVisibility({
-    @required this.visibleFraction,
-    @required this.pagePosition,
+    required this.visibleFraction,
+    required this.pagePosition,
   });
 
   /// How much of the page is currently visible, between 0.0 and 1.0.

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class PresentationPage extends StatelessWidget {
   const PresentationPage({
-    Key key,
+    Key? key,
     this.title,
     this.child,
   }) : super(key: key);
 
-  final Widget title;
-  final Widget child;
+  final Widget? title;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +18,11 @@ class PresentationPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: DefaultTextStyle(
-          style: Theme.of(context).textTheme.headline4.copyWith(
+          style: Theme.of(context).textTheme.headline4!.copyWith(
                 color: const Color(0xFF6AA84F),
                 fontWeight: FontWeight.bold,
               ),
-          child: title,
+          child: title!,
         ),
       ),
       body: child,

@@ -68,7 +68,7 @@ linter:
     # - constant_identifier_names # we are using those all around
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
-    - diagnostic_describe_all_properties
+    # - diagnostic_describe_all_properties # Need to update this
     - directives_ordering
     - empty_catches
     - empty_constructor_bodies

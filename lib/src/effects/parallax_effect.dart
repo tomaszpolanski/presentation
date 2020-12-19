@@ -5,9 +5,9 @@ import 'package:presentation/src/presentation.dart';
 
 class ParallaxWidget extends StatelessWidget {
   const ParallaxWidget({
-    Key key,
+    Key? key,
     this.translationFactor = 100.0,
-    @required this.child,
+    required this.child,
   }) : super(key: key);
 
   final double translationFactor;
@@ -17,7 +17,7 @@ class ParallaxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = ScrollSettings.of(context);
     final resolver = PageVisibilityResolver(metrics: result);
-    final index = PageViewSettings.of(context).index;
+    final index = PageViewSettings.of(context)!.index;
     final visibility = resolver.resolvePageVisibility(index);
     final double xTranslation = visibility.pagePosition * 100;
     return Opacity(
@@ -40,7 +40,7 @@ class ParallaxWidget extends StatelessWidget {
 class ParallaxImage extends StatelessWidget {
   const ParallaxImage(
     this.asset, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String asset;
@@ -49,7 +49,7 @@ class ParallaxImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final result = ScrollSettings.of(context);
     final resolver = PageVisibilityResolver(metrics: result);
-    final index = PageViewSettings.of(context).index;
+    final index = PageViewSettings.of(context)!.index;
     final visibility = resolver.resolvePageVisibility(index);
     return Image.asset(
       asset,

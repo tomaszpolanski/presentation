@@ -30,7 +30,7 @@ class WindowsKeys {
 
 class PresentationController {
   PresentationController({
-    @required this.controller,
+    required this.controller,
     this.animationDuration = const Duration(milliseconds: 300),
   }) : assert(controller != null) {
     _keyboard.addListener(_handleKey);
