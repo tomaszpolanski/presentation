@@ -7,14 +7,14 @@ void main() {
 }
 
 class PresentationExample extends StatefulWidget {
-  const PresentationExample({Key key}) : super(key: key);
+  const PresentationExample({Key? key}) : super(key: key);
   @override
   _PresentationExampleState createState() => _PresentationExampleState();
 }
 
 class _PresentationExampleState extends State<PresentationExample> {
-  PageController _controller;
-  PresentationController _presentationController;
+  late PageController _controller;
+  late PresentationController _presentationController;
 
   @override
   void initState() {
@@ -38,6 +38,7 @@ class _PresentationExampleState extends State<PresentationExample> {
         presentationController: _presentationController,
         children: const [
           SimplePage('1'),
+          SimplePage('2'),
         ],
       ),
     );
@@ -47,13 +48,13 @@ class _PresentationExampleState extends State<PresentationExample> {
 class SimplePage extends StatelessWidget {
   const SimplePage(
     this.text, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(child: Text(text));
   }
 }

@@ -1,4 +1,7 @@
 
+## [1.0.0]
+BREAKING CHANGES Migrating to null safety
+
 ## [1.0.0-nullsafety.0]
 Migrating to null safety
 
