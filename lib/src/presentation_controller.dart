@@ -1,33 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AndroidKeys {
-  static const pageUpKey = 266;
-  static const pageDownKey = 267;
-  static const leftKey = 263;
-  static const rightKey = 262;
-  static const downKey = 264;
-  static const upKey = 265;
-}
-
-class MacOSKeys {
-  static const escapeKey = 53;
-  static const spaceKey = 49;
-  static const pageUpKey = 116;
-  static const pageDownKey = 121;
-  static const leftKey = 123;
-  static const rightKey = 124;
-  static const downKey = 125;
-  static const upKey = 126;
-}
-
-class WindowsKeys {
-  static const leftKey = 37;
-  static const rightKey = 39;
-  static const pageUpKey = 38;
-  static const pageDownKey = 40;
-}
-
 class PresentationController {
   PresentationController({
     required this.controller,
@@ -56,53 +29,15 @@ class PresentationController {
 
   void _handleKey(RawKeyEvent value) {
     if (value is RawKeyUpEvent) {
-      _handleRawKeys(_returnKeyCode(value));
-    }
-  }
-
-  int _returnKeyCode(RawKeyEvent value) {
-    final data = value.data;
-    if (data is RawKeyEventDataLinux) {
-      return data.keyCode;
-    } else if (data is RawKeyEventDataMacOs) {
-      return data.keyCode;
-    } else if (data is RawKeyEventDataAndroid) {
-      return data.keyCode;
-    } else if (data is RawKeyEventDataWindows) {
-      return data.keyCode;
-    } else {
-      return -1;
-    }
-  }
-
-  void _handleRawKeys(int keyCode) {
-    switch (keyCode) {
-      case 20:
-      case 21:
-      case AndroidKeys.leftKey:
-      case AndroidKeys.pageUpKey:
-      case AndroidKeys.upKey:
-      case WindowsKeys.leftKey:
-      case WindowsKeys.pageUpKey:
-      case MacOSKeys.leftKey:
-      case MacOSKeys.pageUpKey:
-      case MacOSKeys.upKey:
+      if (value.logicalKey == LogicalKeyboardKey.arrowLeft ||
+          value.logicalKey == LogicalKeyboardKey.arrowUp ||
+          value.logicalKey == LogicalKeyboardKey.pageUp) {
         _sendAction(PageAction.previous);
-        break;
-      case 19:
-      case 22:
-      case AndroidKeys.rightKey:
-      case AndroidKeys.pageDownKey:
-      case AndroidKeys.downKey:
-      case WindowsKeys.rightKey:
-      case WindowsKeys.pageDownKey:
-      case MacOSKeys.rightKey:
-      case MacOSKeys.pageDownKey:
-      case MacOSKeys.downKey:
+      } else if (value.logicalKey == LogicalKeyboardKey.arrowRight ||
+          value.logicalKey == LogicalKeyboardKey.arrowDown ||
+          value.logicalKey == LogicalKeyboardKey.pageDown) {
         _sendAction(PageAction.next);
-        break;
-      default:
-        break;
+      }
     }
   }
 
