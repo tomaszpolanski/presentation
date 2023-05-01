@@ -1,5 +1,8 @@
 
 ## [1.0.0]
+Upgrading to flutter 3.7.10
+
+## [1.0.0]
 BREAKING CHANGES Migrating to null safety
 
 ## [1.0.0-nullsafety.0]
