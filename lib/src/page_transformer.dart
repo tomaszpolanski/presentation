@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ScrollNotifier extends StatefulWidget {
   const ScrollNotifier({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 
@@ -32,15 +32,15 @@ class _ScrollNotifierState extends State<ScrollNotifier> {
 
 class ScrollSettings extends InheritedWidget {
   const ScrollSettings({
-    Key? key,
+    super.key,
     required this.metrics,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   final ScrollMetrics? metrics;
 
   static ScrollMetrics of(BuildContext context) {
-    final ScrollSettings? widget = context.dependOnInheritedWidgetOfExactType();
+    final widget = context.dependOnInheritedWidgetOfExactType<ScrollSettings>();
     return widget!.metrics!;
   }
 

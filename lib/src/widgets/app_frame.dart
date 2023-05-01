@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppFrame extends StatelessWidget {
   const AppFrame({
-    Key? key,
+    super.key,
     required this.title,
     this.time,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget title;
   final Widget? time;
@@ -43,7 +43,7 @@ class AppFrame extends StatelessWidget {
                 size: 18,
               ),
               DefaultTextStyle.merge(
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: Colors.white,
                       fontFamily: 'Roboto',
                     ),
@@ -52,7 +52,8 @@ class AppFrame extends StatelessWidget {
                       builder: (context) {
                         final now = DateTime.now();
                         return Text(
-                            '${_twoDigits(now.hour)}:${_twoDigits(now.minute)}');
+                          '${_twoDigits(now.hour)}:${_twoDigits(now.minute)}',
+                        );
                       },
                     ),
               ),

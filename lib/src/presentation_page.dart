@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class PresentationPage extends StatelessWidget {
   const PresentationPage({
-    Key? key,
+    super.key,
     required this.title,
     this.child,
-  }) : super(key: key);
+  });
 
   final Widget title;
   final Widget? child;
@@ -18,7 +18,7 @@ class PresentationPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: DefaultTextStyle(
-          style: Theme.of(context).textTheme.headline4!.copyWith(
+          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 color: const Color(0xFF6AA84F),
                 fontWeight: FontWeight.bold,
               ),

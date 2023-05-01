@@ -18,11 +18,13 @@ class PageStepper<T> extends Listenable {
     T nextStep,
     VoidCallback transition,
   ) {
-    _transitions.add(_StepTransition<T>(
-      currentStep: currentStep,
-      nextStep: nextStep,
-      transition: transition,
-    ));
+    _transitions.add(
+      _StepTransition<T>(
+        currentStep: currentStep,
+        nextStep: nextStep,
+        transition: transition,
+      ),
+    );
   }
 
   void add({
@@ -31,17 +33,21 @@ class PageStepper<T> extends Listenable {
     required VoidCallback forward,
     VoidCallback? reverse,
   }) {
-    _transitions.add(_StepTransition<T>(
-      currentStep: fromStep,
-      nextStep: toStep,
-      transition: forward,
-    ));
+    _transitions.add(
+      _StepTransition<T>(
+        currentStep: fromStep,
+        nextStep: toStep,
+        transition: forward,
+      ),
+    );
     if (reverse != null) {
-      _transitions.add(_StepTransition<T>(
-        currentStep: toStep,
-        nextStep: fromStep,
-        transition: reverse,
-      ));
+      _transitions.add(
+        _StepTransition<T>(
+          currentStep: toStep,
+          nextStep: fromStep,
+          transition: reverse,
+        ),
+      );
     }
   }
 
@@ -64,7 +70,7 @@ class PageStepper<T> extends Listenable {
   }
 
   T _tryTransition({required T current, required T next}) {
-    final _StepTransition<T>? t = _transitions.firstWhereOrNull(
+    final t = _transitions.firstWhereOrNull(
       (transition) =>
           transition.currentStep == _currentStep && transition.nextStep == next,
     );
@@ -135,7 +141,7 @@ class _StepTransition<T> {
 
 extension ListEx<E> on List<E> {
   E? firstWhereOrNull(bool Function(E element) test) {
-    for (final E element in this) {
+    for (final element in this) {
       if (test(element)) {
         return element;
       }
