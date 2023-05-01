@@ -5,13 +5,13 @@ import 'package:presentation/src/widgets/colors.dart';
 class Editor extends StatefulWidget {
   const Editor(
     this.data, {
-    Key? key,
+    super.key,
     this.brightness = Brightness.dark,
     this.padding = EdgeInsets.zero,
     this.nested = false,
     this.fontSize = 20,
     this.children = const [],
-  }) : super(key: key);
+  });
 
   final String data;
   final Brightness brightness;
@@ -86,8 +86,8 @@ class EditorLine extends StatelessWidget {
     required this.animation,
     required this.children,
     this.fontSize = 20,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String data;
   final Animation<double> animation;
@@ -153,7 +153,9 @@ Iterable<InlineSpan> _createStrings(String word, Animation<double> animation) =>
     );
 
 Iterable<InlineSpan> _createKeywords(
-        String data, Animation<double> animation) =>
+  String data,
+  Animation<double> animation,
+) =>
     _createSpans(
       RegExp(_keywords.map((it) => '\\b$it\\b').join('|')),
       EditorColor.keyword,
@@ -188,7 +190,9 @@ Iterable<InlineSpan> _createValue(String word, Animation<double> animation) =>
     );
 
 Iterable<InlineSpan> _createBrackets(
-        String word, Animation<double> animation) =>
+  String word,
+  Animation<double> animation,
+) =>
     _createSpans(RegExp(r'[\[\]{}()<>]'), EditorColor.brackets, _createAt)(
       word,
       animation,
@@ -204,7 +208,9 @@ Iterable<InlineSpan> _createNumber(String word, Animation<double> animation) =>
     );
 
 Iterable<InlineSpan> _createSeparator(
-        String word, Animation<double> animation) =>
+  String word,
+  Animation<double> animation,
+) =>
     _createSpans(RegExp('[,;]'), EditorColor.keyword, _createWords)(
       word,
       animation,

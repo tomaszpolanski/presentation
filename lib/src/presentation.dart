@@ -8,8 +8,8 @@ class Presentation extends StatelessWidget {
     required this.controller,
     required this.presentationController,
     this.enableMouseNavigation = true,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Allows navigating to next slide with single tap and to previous slide
   /// with double tap
@@ -53,10 +53,10 @@ class Presentation extends StatelessWidget {
 
 class PageViewSettings extends InheritedWidget {
   const PageViewSettings({
-    Key? key,
+    super.key,
     required this.index,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   final int index;
 
@@ -85,8 +85,8 @@ class PageVisibilityResolver {
   /// Used inside PageViews' itemBuilder, but can be also used in a
   /// simple PageView that simply has an array of children passed to it.
   PageVisibility resolvePageVisibility(int pageIndex) {
-    final double pagePosition = _calculatePagePosition(pageIndex);
-    final double visiblePageFraction =
+    final pagePosition = _calculatePagePosition(pageIndex);
+    final visiblePageFraction =
         _calculateVisiblePageFraction(pageIndex, pagePosition);
 
     return PageVisibility(
@@ -101,13 +101,13 @@ class PageVisibilityResolver {
           : 0.0;
 
   double _calculatePagePosition(int index) {
-    final double viewPortFraction = _viewPortFraction ?? 1.0;
-    final double pageViewWidth =
+    final viewPortFraction = _viewPortFraction ?? 1.0;
+    final pageViewWidth =
         (_pageMetrics?.viewportDimension ?? 1.0) * viewPortFraction;
-    final double pageX = pageViewWidth * index;
-    final double scrollX = _pageMetrics?.pixels ?? 0.0;
-    final double pagePosition = (pageX - scrollX) / pageViewWidth;
-    final double safePagePosition = !pagePosition.isNaN ? pagePosition : 0.0;
+    final pageX = pageViewWidth * index;
+    final scrollX = _pageMetrics?.pixels ?? 0.0;
+    final pagePosition = (pageX - scrollX) / pageViewWidth;
+    final safePagePosition = !pagePosition.isNaN ? pagePosition : 0.0;
 
     if (safePagePosition > 1.0) {
       return 1;

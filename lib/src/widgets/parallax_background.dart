@@ -1,16 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:presentation/src/widgets/animation_mode.dart';
 
 export 'package:presentation/presentation.dart';
 
 class AnimatedParallaxImage extends StatefulWidget {
   const AnimatedParallaxImage({
-    Key? key,
+    super.key,
     required this.asset,
     this.opacity = 1,
-  }) : super(key: key);
+  });
 
   final String asset;
   final double opacity;

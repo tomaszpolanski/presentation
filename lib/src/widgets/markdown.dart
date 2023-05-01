@@ -5,8 +5,8 @@ class Markdown extends StatelessWidget {
   const Markdown(
     this.data, {
     this.style,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String data;
   final TextStyle? style;
@@ -31,8 +31,8 @@ class MarkdownLine extends StatelessWidget {
   const MarkdownLine(
     this.data, {
     this.style,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String data;
   final TextStyle? style;
@@ -59,14 +59,16 @@ class MarkdownLine extends StatelessWidget {
         onNonMatch: _createItalic,
       );
 
-  Iterable<InlineSpan> _createItalic(String word) =>
-      splitMapJoin(word, RegExp(r'\*([a-zA-Z\.]+)\*'),
-          onMatch: (m) {
-            return TextSpan(
-              text: m.group(1),
-              style: (style ?? const TextStyle())
-                  .copyWith(fontStyle: FontStyle.italic),
-            );
-          },
-          onNonMatch: (m) => [TextSpan(text: m)]);
+  Iterable<InlineSpan> _createItalic(String word) => splitMapJoin(
+        word,
+        RegExp(r'\*([a-zA-Z\.]+)\*'),
+        onMatch: (m) {
+          return TextSpan(
+            text: m.group(1),
+            style: (style ?? const TextStyle())
+                .copyWith(fontStyle: FontStyle.italic),
+          );
+        },
+        onNonMatch: (m) => [TextSpan(text: m)],
+      );
 }

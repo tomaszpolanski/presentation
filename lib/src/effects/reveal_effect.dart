@@ -3,10 +3,10 @@ import 'package:presentation/src/widgets/animation_builder.dart';
 
 class RevealEffect extends StatefulWidget {
   const RevealEffect({
-    Key? key,
+    super.key,
     required this.child,
     this.offset = const Offset(0, 0),
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Offset offset;

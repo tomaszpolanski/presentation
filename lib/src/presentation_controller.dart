@@ -117,7 +117,7 @@ class PresentationController {
           break;
       }
     } else {
-      for (final ValueChanged<PageAction> listener in _listeners) {
+      for (final listener in _listeners) {
         listener(action);
       }
     }

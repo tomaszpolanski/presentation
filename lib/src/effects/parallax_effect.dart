@@ -5,10 +5,10 @@ import 'package:presentation/src/presentation.dart';
 
 class ParallaxWidget extends StatelessWidget {
   const ParallaxWidget({
-    Key? key,
+    super.key,
     this.translationFactor = 100.0,
     required this.child,
-  }) : super(key: key);
+  });
 
   final double translationFactor;
   final Widget child;
@@ -19,7 +19,7 @@ class ParallaxWidget extends StatelessWidget {
     final resolver = PageVisibilityResolver(metrics: result);
     final index = PageViewSettings.of(context).index;
     final visibility = resolver.resolvePageVisibility(index);
-    final double xTranslation = visibility.pagePosition * 100;
+    final xTranslation = visibility.pagePosition * 100;
     return Opacity(
       opacity: visibility.visibleFraction,
       child: Transform(
@@ -40,8 +40,8 @@ class ParallaxWidget extends StatelessWidget {
 class ParallaxImage extends StatelessWidget {
   const ParallaxImage(
     this.asset, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String asset;
 

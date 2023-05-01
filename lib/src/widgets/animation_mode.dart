@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 class AnimationMode extends InheritedWidget {
   const AnimationMode({
-    Key? key,
+    super.key,
     required this.enabled,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   final bool enabled;
 
   static bool of(BuildContext context) {
-    final AnimationMode? widget = context.dependOnInheritedWidgetOfExactType();
+    final widget = context.dependOnInheritedWidgetOfExactType<AnimationMode>();
     return widget?.enabled ?? true;
   }
 
@@ -22,12 +22,14 @@ class AnimationMode extends InheritedWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(FlagProperty(
-      'mode',
-      value: enabled,
-      ifTrue: 'enabled',
-      ifFalse: 'disabled',
-      showName: true,
-    ));
+    properties.add(
+      FlagProperty(
+        'mode',
+        value: enabled,
+        ifTrue: 'enabled',
+        ifFalse: 'disabled',
+        showName: true,
+      ),
+    );
   }
 }

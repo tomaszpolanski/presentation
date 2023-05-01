@@ -6,11 +6,7 @@ Iterable<InlineSpan> splitMapJoin(
   required InlineSpan Function(Match match) onMatch,
   required Iterable<InlineSpan> Function(String nonMatch) onNonMatch,
 }) sync* {
-  if (pattern is! Pattern) {
-    throw ArgumentError('$pattern is not a Pattern');
-  }
-
-  int startIndex = 0;
+  var startIndex = 0;
   for (final match in pattern.allMatches(data)) {
     yield* onNonMatch(data.substring(startIndex, match.start));
     yield onMatch(match);
