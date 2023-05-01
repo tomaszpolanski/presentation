@@ -6,7 +6,8 @@ void main() {
 }
 
 class PresentationExample extends StatefulWidget {
-  const PresentationExample({Key? key}) : super(key: key);
+  const PresentationExample({super.key});
+
   @override
   _PresentationExampleState createState() => _PresentationExampleState();
 }
@@ -47,8 +48,8 @@ class _PresentationExampleState extends State<PresentationExample> {
 class SimplePage extends StatelessWidget {
   const SimplePage(
     this.text, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String text;
 
