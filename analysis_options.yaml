@@ -6,9 +6,6 @@ analyzer:
     missing_required_param: error
     missing_return: error
     unused_element: ignore
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
 
   exclude:
     - "**/*.g.dart"
