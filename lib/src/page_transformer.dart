@@ -39,9 +39,9 @@ class ScrollSettings extends InheritedWidget {
 
   final ScrollMetrics? metrics;
 
-  static ScrollMetrics of(BuildContext context) {
+  static ScrollMetrics? of(BuildContext context) {
     final widget = context.dependOnInheritedWidgetOfExactType<ScrollSettings>();
-    return widget!.metrics!;
+    return widget?.metrics;
   }
 
   @override
