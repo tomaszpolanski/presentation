@@ -1,4 +1,7 @@
 
+## [2.0.1]
+Fixing nullability issue
+
 ## [2.0.0]
 Upgrading to flutter 3.7.10
 
