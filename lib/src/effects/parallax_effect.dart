@@ -40,10 +40,12 @@ class ParallaxWidget extends StatelessWidget {
 class ParallaxImage extends StatelessWidget {
   const ParallaxImage(
     this.asset, {
+    this.package,
     super.key,
   });
 
   final String asset;
+  final String? package;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class ParallaxImage extends StatelessWidget {
     final visibility = resolver.resolvePageVisibility(index);
     return Image.asset(
       asset,
+      package: package,
       fit: BoxFit.fitHeight,
       alignment: Alignment(visibility.pagePosition, 0),
     );
@@ -61,6 +64,8 @@ class ParallaxImage extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty('asset', asset, showName: false));
+    properties
+      ..add(StringProperty('asset', asset, showName: false))
+      ..add(StringProperty('package', package ?? 'missing', showName: false));
   }
 }
