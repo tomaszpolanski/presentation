@@ -1,3 +1,6 @@
+## [2.2.0]
+Allowing to pass package to `ParallaxWidget`
+
 ## [2.1.0]
 - Support navigation by keys on Linux (by [a14n](https://github.com/a14n))
 - Allowing to pass package to `AnimatedParallaxImage`
