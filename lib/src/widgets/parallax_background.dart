@@ -7,10 +7,12 @@ class AnimatedParallaxImage extends StatefulWidget {
   const AnimatedParallaxImage({
     super.key,
     required this.asset,
+    this.package,
     this.opacity = 1,
   });
 
   final String asset;
+  final String? package;
   final double opacity;
 
   @override
@@ -51,6 +53,7 @@ class _AnimatedParallaxImageState extends State<AnimatedParallaxImage>
       builder: (_, __) {
         return Image.asset(
           widget.asset,
+          package: widget.package,
           color: Colors.white.withOpacity(widget.opacity),
           colorBlendMode: BlendMode.modulate,
           fit: BoxFit.fitHeight,

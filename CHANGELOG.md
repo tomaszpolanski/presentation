@@ -1,3 +1,5 @@
+## [2.1.0]
+Allowing to pass package to `AnimatedParallaxImage`
 
 ## [2.0.1]
 Fixing nullability issue
