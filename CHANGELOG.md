@@ -1,8 +1,6 @@
-## [2.2.0]
-Support navigation by keys on Linux (by [a14n](https://github.com/a14n))
-
 ## [2.1.0]
-Allowing to pass package to `AnimatedParallaxImage`
+- Support navigation by keys on Linux (by [a14n](https://github.com/a14n))
+- Allowing to pass package to `AnimatedParallaxImage`
 
 ## [2.0.1]
 Fixing nullability issue
